@@ -81,16 +81,7 @@ const Header = () => {
 		<nav className="navbar navbar-expand justify-content-between">
 		  {/* === Gauche === */}
 		  <div className="header-left">
-			<div
-			  className="dashboard_bar"
-			  style={{ textTransform: "capitalize", fontWeight: 600, fontSize: "20px" }}
-			>
-			  {finalName.join(" ").length === 0
-				? "Dashboard"
-				: finalName.join(" ") === "dashboard dark"
-				? "Dashboard"
-				: finalName.join(" ")}
-			</div>
+			
 		  </div>
 
 		  {/* === Droite === */}

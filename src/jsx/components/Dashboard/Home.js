@@ -19,7 +19,7 @@ const API_BASE_URL = process.env.REACT_APP_API_BASE_URL
 const Home = () => {
   const { changeBackground } = useContext(ThemeContext);
   const [studentsCount, setStudentsCount] = useState(0);
-  const [teachersCount, setTeachersCount] = useState(130);
+  const [teachersCount, setTeachersCount] = useState(10);
   const [parentsCount, setParentsCount] = useState(700);
   const [classesCount, setClassesCount] = useState(300);
 
@@ -53,7 +53,55 @@ const Home = () => {
         setStudentsCount(0);
       }
     };
+    const fetchParents = async () => {
+      try {
+        const token = localStorage.getItem("access")?.replaceAll('"', "");
+        const response = await axios.get(`${API_BASE_URL}/api/parents/`, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        
+        // ✅ Si la réponse contient une liste
+        if (Array.isArray(response.data)) {
+          setParentsCount(response.data.length);
+        } else if (response.data.count) {
+          setParentsCount(response.data.count);
+        } else {
+          setParentsCount(0);
+        }
+      } catch (error) {
+        console.error("❌ Erreur lors de la récupération des élèves :", error);
+        setParentsCount(0);
+      }
+    };
 
+    const fetchClasses = async () => {
+      try {
+        const token = localStorage.getItem("access")?.replaceAll('"', "");
+        const response = await axios.get(`${API_BASE_URL}/api/classes/`, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        
+        // ✅ Si la réponse contient une liste
+        if (Array.isArray(response.data)) {
+          setClassesCount(response.data.length);
+        } else if (response.data.count) {
+          setClassesCount(response.data.count);
+        } else {
+          setClassesCount(0);
+        }
+      } catch (error) {
+        console.error("❌ Erreur lors de la récupération des élèves :", error);
+        setParentsCount(0);
+      }
+    };
+    fetchClasses();
+    fetchParents();
     fetchStudents();
   }, []);
 

@@ -2,7 +2,7 @@ import React, { Fragment, useState } from "react";
 import SideBar from "./SideBar";
 import NavHader from "./NavHader";
 import Header from "./Header2";
-import ChatBox from "../ChatBox";
+
 
 
 const NavBlog = ({ title, onClick: ClickToAddEvent, onClick2, onClick3 }) => {
@@ -12,7 +12,7 @@ const NavBlog = ({ title, onClick: ClickToAddEvent, onClick2, onClick3 }) => {
     <Fragment>
      
    
-      <ChatBox onClick={() => onClick("chatbox")} toggle={toggle} />
+      
       <Header
         onNote={() => onClick("chatbox")}
         onNotification={() => onClick("notification")}

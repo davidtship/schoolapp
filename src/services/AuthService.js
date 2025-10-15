@@ -66,6 +66,7 @@ export function saveTokenInLocalStorage(tokenDetails) {
     if (!tokenDetails || typeof tokenDetails !== 'object') return;
     localStorage.setItem('userDetails', JSON.stringify(tokenDetails));
     localStorage.setItem('access', tokenDetails.access);
+    localStorage.setItem('rccm', tokenDetails.rccm);
 }
 
 // 🔁 Vérification automatique de session

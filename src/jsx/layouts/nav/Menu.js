@@ -11,75 +11,55 @@ export const MenuList = [
         iconStyle: <i className="material-icons">school</i>,
         content: [
             {
-                title: 'Nouveau',
-                to: 'add-student',
-                iconStyle: <i className="material-icons">person_add</i>,
-            },
-            {
                 title: 'Liste',
                 to: 'student',
-                iconStyle: <i className="material-icons">list</i>,
+                iconStyle: <i className="material-icons">list_alt</i>,
             },
             {
                 title: 'Détails',
-                to: 'student-details',
+                to: '#',
                 iconStyle: <i className="material-icons">info</i>,
             },
             {
                 title: 'Affectations',
-                to: 'student-assign',
+                to: 'affectations',
                 iconStyle: <i className="material-icons">assignment_ind</i>,
             },
         ],
     },
     {
-        title: 'Classes',
+        title: 'Organisation',
         classsChange: 'mm-collapse',
-        iconStyle: <i className="material-icons">class</i>,
+        iconStyle: <i className="material-icons">apartment</i>,
         content: [
             {
-                title: 'Liste des classes',
-                to: 'classes',
-                iconStyle: <i className="material-icons">view_list</i>,
+                title: 'Directions',
+                to: 'directions',
+                iconStyle: <i className="material-icons">business</i>,
             },
             {
-                title: 'Détails classe',
-                to: 'class-details',
-                iconStyle: <i className="material-icons">info_outline</i>,
+                title: 'Sections',
+                to: 'sections',
+                iconStyle: <i className="material-icons">layers</i>,
+            },
+            {
+                title: 'Options',
+                to: 'options',
+                iconStyle: <i className="material-icons">tune</i>,
+            },
+            {
+                title: 'Classes',
+                to: 'classes',
+                iconStyle: <i className="material-icons">class</i>,
             },
         ],
     },
+    
     {
-        title: 'Paiements',
+        title: 'Payement',
         classsChange: 'mm-collapse',
-        iconStyle: <i className="material-icons">payments</i>,
-        content: [
-            {
-                title: 'Fichiers',
-                to: 'file-manager',
-                iconStyle: <i className="material-icons">folder_open</i>,
-            },
-            {
-                title: 'Utilisateurs',
-                to: 'user',
-                iconStyle: <i className="material-icons">group</i>,
-            },
-            {
-                title: 'Calendrier',
-                to: 'calendar',
-                iconStyle: <i className="material-icons">calendar_today</i>,
-            },
-            {
-                title: 'Chat',
-                to: 'chat',
-                iconStyle: <i className="material-icons">chat</i>,
-            },
-            {
-                title: 'Activité',
-                to: 'activity',
-                iconStyle: <i className="material-icons">timeline</i>,
-            },
-        ],
+        iconStyle: <i className="material-icons">payment</i>,
+        to: 'chart-chartjs',
     },
     {
         title: 'Frais',
@@ -104,6 +84,12 @@ export const MenuList = [
         ],
     },
     {
+        title: 'Recouvrement',
+        classsChange: 'mm-collapse',
+        iconStyle: <i className="material-icons">monetization_on</i>,
+        to: 'chart-chartjs',
+    },
+    {
         title: 'Rapports',
         classsChange: 'mm-collapse',
         iconStyle: <i className="material-icons">bar_chart</i>,
@@ -126,7 +112,7 @@ export const MenuList = [
             {
                 title: 'Apexchart',
                 to: 'chart-apexchart',
-                iconStyle: <i className="material-icons">area_chart</i>,
+                iconStyle: <i className="material-icons">stacked_line_chart</i>,
             },
         ],
     },
@@ -137,13 +123,13 @@ export const MenuList = [
         content: [
             {
                 title: 'Historique transferts',
-                to: 'transfert-eleve',
+                to: '#',
                 iconStyle: <i className="material-icons">history</i>,
             },
             {
                 title: 'Nouveau transfert',
-                to: 'ajout-transfert',
-                iconStyle: <i className="material-icons">person_add_alt</i>,
+                to: '#',
+                iconStyle: <i className="material-icons">person_add_alt_1</i>,
             },
         ],
     },
@@ -170,7 +156,12 @@ export const MenuList = [
             {
                 title: 'Configuration monnaie',
                 to: 'config-monaie',
-                iconStyle: <i className="material-icons">currency_exchange</i>,
+                iconStyle: <i className="material-icons">attach_money</i>,
+            },
+            {
+                title: 'Configuration scolaire',
+                to: 'configSchool',
+                iconStyle: <i className="material-icons">school</i>,
             },
         ],
     },
@@ -183,27 +174,7 @@ export const MenuList = [
                 title: 'Liste utilisateurs',
                 to: 'form-element',
                 iconStyle: <i className="material-icons">person</i>,
-            },
-            {
-                title: 'Wizard',
-                to: 'form-wizard',
-                iconStyle: <i className="material-icons">auto_fix_high</i>,
-            },
-            {
-                title: 'CkEditor',
-                to: 'form-ckeditor',
-                iconStyle: <i className="material-icons">edit_note</i>,
-            },
-            {
-                title: 'Pickers',
-                to: 'form-pickers',
-                iconStyle: <i className="material-icons">date_range</i>,
-            },
-            {
-                title: 'Validation',
-                to: 'form-validation',
-                iconStyle: <i className="material-icons">check_circle</i>,
-            },
+            }
         ],
     },
 ];

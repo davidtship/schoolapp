@@ -49,8 +49,8 @@ function Login(props) {
           <div className="col-md-6 d-flex flex-column justify-content-center align-items-center text-center text-white"
                style={{ backgroundColor: '#539bff', borderRadius: '16px 0 0 16px', padding: '40px 20px' }}>
             <h1 style={{ fontFamily: "'Poppins', sans-serif", fontSize: '42px', fontWeight: '600', color: '#0d6efd', letterSpacing: '1px', marginBottom: '20px' }}>
-              <span style={{ color: '#0d6efd', backgroundColor: '#e9f1ff', padding: '6px 14px', borderRadius: '12px', fontWeight: '700', marginRight: '8px' }}>School</span>
-              <span style={{ color: '#212529', fontWeight: '500' }}>App</span>
+              <span style={{ color: '#0d6efd', backgroundColor: '#e9f1ff', padding: '6px 14px', borderRadius: '12px', fontWeight: '700', marginRight: '8px' }}>Aca</span>
+              <span style={{ color: '#212529', fontWeight: '500' }}>Pay</span>
             </h1>
             <h2 style={{ fontWeight: '600', color: '#fff', marginTop: '15px' }}>Bienvenue</h2>
             <p className="px-3" style={{ color: '#e0e7ff', fontSize: '14px' }}>
