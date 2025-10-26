@@ -1,7 +1,8 @@
-import React, { forwardRef, useImperativeHandle, useState } from "react";
+import React, { useState, forwardRef, useImperativeHandle } from "react";
 import { Modal, Button } from "react-bootstrap";
+import "./BasicModal.css"; // <-- On va définir la taille ici
 
-const BasicModal = forwardRef(({ children, title }, ref) => {
+const BasicModal = forwardRef(({ title, children }, ref) => {
   const [show, setShow] = useState(false);
 
   useImperativeHandle(ref, () => ({
@@ -10,12 +11,24 @@ const BasicModal = forwardRef(({ children, title }, ref) => {
   }));
 
   return (
-    <Modal show={show} onHide={() => setShow(false)} size="lg" centered>
+    <Modal
+      show={show}
+      onHide={() => setShow(false)}
+      centered
+      dialogClassName="custom-modal-width horizontal-modal"
+    >
       <Modal.Header closeButton>
-        <Modal.Title>{title || "Ajouter un élément"}</Modal.Title>
+        <Modal.Title className="fw-bold text-primary">
+          {title || "Ajouter un élément"}
+        </Modal.Title>
       </Modal.Header>
-      <Modal.Body>{children}</Modal.Body>
-      <Modal.Footer>
+
+      {/* Corps horizontal */}
+      <Modal.Body className="d-flex flex-row align-items-start gap-4 p-4">
+        {children}
+      </Modal.Body>
+
+      <Modal.Footer className="d-flex justify-content-end">
         <Button variant="secondary" onClick={() => setShow(false)}>
           Fermer
         </Button>

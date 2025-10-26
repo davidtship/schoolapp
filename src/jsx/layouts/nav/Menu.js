@@ -1,180 +1,130 @@
+import React from "react";
+
+// Importation des icônes depuis MUI
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import SchoolIcon from "@mui/icons-material/School";
+import ListAltIcon from "@mui/icons-material/ListAlt";
+import InfoIcon from "@mui/icons-material/Info";
+import AssignmentIndIcon from "@mui/icons-material/AssignmentInd";
+import ApartmentIcon from "@mui/icons-material/Apartment";
+import BusinessIcon from "@mui/icons-material/Business";
+import LayersIcon from "@mui/icons-material/Layers";
+import TuneIcon from "@mui/icons-material/Tune";
+import ClassIcon from "@mui/icons-material/Class";
+import PaymentIcon from "@mui/icons-material/Payment";
+import CategoryIcon from "@mui/icons-material/Category";
+import PriceChangeIcon from "@mui/icons-material/PriceChange";
+import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
+import BarChartIcon from "@mui/icons-material/BarChart";
+import ShowChartIcon from "@mui/icons-material/ShowChart";
+import InsertChartIcon from "@mui/icons-material/InsertChart";
+import TimelineIcon from "@mui/icons-material/Timeline";
+import StackedLineChartIcon from "@mui/icons-material/StackedLineChart";
+import CompareArrowsIcon from "@mui/icons-material/CompareArrows";
+import HistoryIcon from "@mui/icons-material/History";
+import PersonAddAlt1Icon from "@mui/icons-material/PersonAddAlt1";
+import SettingsIcon from "@mui/icons-material/Settings";
+import BackupIcon from "@mui/icons-material/Backup";
+import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
+import CurrencyExchangeIcon from "@mui/icons-material/CurrencyExchange";
+import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
+import PeopleIcon from "@mui/icons-material/People";
+import PersonIcon from "@mui/icons-material/Person";
+
+// ✅ fonction helper pour rendre toutes les icônes blanches (style forcé)
+const whiteIcon = (IconComponent) => (
+  <IconComponent style={{ color: "white", fill: "white", opacity: 0.9 }} />
+);
+
 export const MenuList = [
-    {
-        title: 'Dashboard',
-        classsChange: 'mm-collapse',
-        iconStyle: <i className="material-icons">dashboard</i>,
-        to: 'dashboard',
-    },
-    {
-        title: 'Élèves',
-        classsChange: 'mm-collapse',
-        iconStyle: <i className="material-icons">school</i>,
-        content: [
-            {
-                title: 'Liste',
-                to: 'student',
-                iconStyle: <i className="material-icons">list_alt</i>,
-            },
-            {
-                title: 'Détails',
-                to: '#',
-                iconStyle: <i className="material-icons">info</i>,
-            },
-            {
-                title: 'Affectations',
-                to: 'affectations',
-                iconStyle: <i className="material-icons">assignment_ind</i>,
-            },
-        ],
-    },
-    {
-        title: 'Organisation',
-        classsChange: 'mm-collapse',
-        iconStyle: <i className="material-icons">apartment</i>,
-        content: [
-            {
-                title: 'Directions',
-                to: 'directions',
-                iconStyle: <i className="material-icons">business</i>,
-            },
-            {
-                title: 'Sections',
-                to: 'sections',
-                iconStyle: <i className="material-icons">layers</i>,
-            },
-            {
-                title: 'Options',
-                to: 'options',
-                iconStyle: <i className="material-icons">tune</i>,
-            },
-            {
-                title: 'Classes',
-                to: 'classes',
-                iconStyle: <i className="material-icons">class</i>,
-            },
-        ],
-    },
-    
-    {
-        title: 'Payement',
-        classsChange: 'mm-collapse',
-        iconStyle: <i className="material-icons">payment</i>,
-        to: 'chart-chartjs',
-    },
-    {
-        title: 'Frais',
-        classsChange: 'mm-collapse',
-        iconStyle: <i className="material-icons">account_balance_wallet</i>,
-        content: [
-            {
-                title: 'Type de frais',
-                to: 'type-frais',
-                iconStyle: <i className="material-icons">category</i>,
-            },
-            {
-                title: 'Catégorie frais',
-                to: 'categorie-frais',
-                iconStyle: <i className="material-icons">layers</i>,
-            },
-            {
-                title: 'Frais par option',
-                to: 'frais-par-options',
-                iconStyle: <i className="material-icons">tune</i>,
-            },
-        ],
-    },
-    {
-        title: 'Recouvrement',
-        classsChange: 'mm-collapse',
-        iconStyle: <i className="material-icons">monetization_on</i>,
-        to: 'chart-chartjs',
-    },
-    {
-        title: 'Rapports',
-        classsChange: 'mm-collapse',
-        iconStyle: <i className="material-icons">bar_chart</i>,
-        content: [
-            {
-                title: 'RechartJs',
-                to: 'chart-rechart',
-                iconStyle: <i className="material-icons">show_chart</i>,
-            },
-            {
-                title: 'Chartjs',
-                to: 'chart-chartjs',
-                iconStyle: <i className="material-icons">insert_chart</i>,
-            },
-            {
-                title: 'Sparkline',
-                to: 'chart-sparkline',
-                iconStyle: <i className="material-icons">timeline</i>,
-            },
-            {
-                title: 'Apexchart',
-                to: 'chart-apexchart',
-                iconStyle: <i className="material-icons">stacked_line_chart</i>,
-            },
-        ],
-    },
-    {
-        title: 'Transfert élèves',
-        classsChange: 'mm-collapse',
-        iconStyle: <i className="material-icons">compare_arrows</i>,
-        content: [
-            {
-                title: 'Historique transferts',
-                to: '#',
-                iconStyle: <i className="material-icons">history</i>,
-            },
-            {
-                title: 'Nouveau transfert',
-                to: '#',
-                iconStyle: <i className="material-icons">person_add_alt_1</i>,
-            },
-        ],
-    },
-    {
-        title: 'Paramètres',
-        classsChange: 'mm-collapse',
-        iconStyle: <i className="material-icons">settings</i>,
-        content: [
-            {
-                title: 'Backup',
-                to: 'uc-select2',
-                iconStyle: <i className="material-icons">backup</i>,
-            },
-            {
-                title: 'Année scolaire',
-                to: 'uc-sweetalert',
-                iconStyle: <i className="material-icons">calendar_month</i>,
-            },
-            {
-                title: 'Monnaie',
-                to: 'monaie',
-                iconStyle: <i className="material-icons">currency_exchange</i>,
-            },
-            {
-                title: 'Configuration monnaie',
-                to: 'config-monaie',
-                iconStyle: <i className="material-icons">attach_money</i>,
-            },
-            {
-                title: 'Configuration scolaire',
-                to: 'configSchool',
-                iconStyle: <i className="material-icons">school</i>,
-            },
-        ],
-    },
-    {
-        title: 'Utilisateurs',
-        classsChange: 'mm-collapse',
-        iconStyle: <i className="material-icons">people</i>,
-        content: [
-            {
-                title: 'Liste utilisateurs',
-                to: 'form-element',
-                iconStyle: <i className="material-icons">person</i>,
-            }
-        ],
-    },
+  {
+    title: "Dashboard",
+    classsChange: "mm-collapse",
+    iconStyle: whiteIcon(DashboardIcon),
+    to: "dashboard",
+  },
+  {
+    title: "Élèves",
+    classsChange: "mm-collapse",
+    iconStyle: whiteIcon(SchoolIcon),
+    content: [
+      { title: "Liste", to: "student", iconStyle: whiteIcon(ListAltIcon) },
+      { title: "Détails", to: "#", iconStyle: whiteIcon(InfoIcon) },
+      { title: "Affectations", to: "affectations", iconStyle: whiteIcon(AssignmentIndIcon) },
+    ],
+  },
+  {
+    title: "Structure",
+    classsChange: "mm-collapse",
+    iconStyle: whiteIcon(ApartmentIcon),
+    content: [
+      { title: "Directions", to: "directions", iconStyle: whiteIcon(BusinessIcon) },
+      { title: "Sections", to: "sections", iconStyle: whiteIcon(LayersIcon) },
+      { title: "Options", to: "options", iconStyle: whiteIcon(TuneIcon) },
+      { title: "Classes", to: "classes", iconStyle: whiteIcon(ClassIcon) },
+    ],
+  },
+  {
+    title: "Payement",
+    classsChange: "mm-collapse",
+    iconStyle: whiteIcon(PaymentIcon),
+    to: "payement",
+  },
+  {
+    title: "Frais",
+    classsChange: "mm-collapse",
+    iconStyle: whiteIcon(CategoryIcon),
+    content: [
+      { title: "Type de frais", to: "type-frais", iconStyle: whiteIcon(CategoryIcon) },
+      { title: "Catégorie frais", to: "categorie-frais", iconStyle: whiteIcon(LayersIcon) },
+      { title: "Frais par option", to: "frais-par-options", iconStyle: whiteIcon(TuneIcon) },
+      { title: "Terms", to: "terms", iconStyle: whiteIcon(PriceChangeIcon) },
+    ],
+  },
+  {
+    title: "Recouvrement",
+    classsChange: "mm-collapse",
+    iconStyle: whiteIcon(MonetizationOnIcon),
+    to: "chart-chartjs",
+  },
+  {
+    title: "Rapports",
+    classsChange: "mm-collapse",
+    iconStyle: whiteIcon(BarChartIcon),
+    content: [
+      { title: "RechartJs", to: "chart-rechart", iconStyle: whiteIcon(ShowChartIcon) },
+      { title: "Chartjs", to: "chart-chartjs", iconStyle: whiteIcon(InsertChartIcon) },
+      { title: "Sparkline", to: "chart-sparkline", iconStyle: whiteIcon(TimelineIcon) },
+      { title: "Apexchart", to: "chart-apexchart", iconStyle: whiteIcon(StackedLineChartIcon) },
+    ],
+  },
+  {
+    title: "Transfert élèves",
+    classsChange: "mm-collapse",
+    iconStyle: whiteIcon(CompareArrowsIcon),
+    content: [
+      { title: "Historique transferts", to: "#", iconStyle: whiteIcon(HistoryIcon) },
+      { title: "Nouveau transfert", to: "#", iconStyle: whiteIcon(PersonAddAlt1Icon) },
+    ],
+  },
+  {
+    title: "Paramètres",
+    classsChange: "mm-collapse",
+    iconStyle: whiteIcon(SettingsIcon),
+    content: [
+      { title: "Backup", to: "uc-select2", iconStyle: whiteIcon(BackupIcon) },
+      { title: "Année scolaire", to: "uc-sweetalert", iconStyle: whiteIcon(CalendarMonthIcon) },
+      { title: "Monnaie", to: "monaie", iconStyle: whiteIcon(CurrencyExchangeIcon) },
+      { title: "Configuration monnaie", to: "config-monaie", iconStyle: whiteIcon(AttachMoneyIcon) },
+      { title: "Configuration scolaire", to: "configSchool", iconStyle: whiteIcon(SchoolIcon) },
+    ],
+  },
+  {
+    title: "Utilisateurs",
+    classsChange: "mm-collapse",
+    iconStyle: whiteIcon(PeopleIcon),
+    content: [
+      { title: "Liste utilisateurs", to: "form-element", iconStyle: whiteIcon(PersonIcon) },
+    ],
+  },
 ];

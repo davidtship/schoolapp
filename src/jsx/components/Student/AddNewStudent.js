@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
-import DatePicker from "react-datepicker";
 import Select from "react-select";
 import axios from "axios";
+import "bootstrap-icons/font/bootstrap-icons.css";
 import { IMAGES } from "../Dashboard/Content";
 
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 const AddNewStudent = () => {
   const [file, setFile] = useState(null);
-  const [startDate, setStartDate] = useState(null);
   const [loading, setLoading] = useState(false);
 
   const [formData, setFormData] = useState({
@@ -149,7 +148,6 @@ const AddNewStudent = () => {
         student_code: "",
       });
       setFile(null);
-      setStartDate(null);
     } catch (err) {
       console.error(err);
       alert("❌ Erreur lors de l’ajout de l’élève !");
@@ -160,11 +158,13 @@ const AddNewStudent = () => {
 
   return (
     <div className="container my-5">
-          <h2 style={{color: '#539bff'}} className="text-center mb-4"> Ajouter un nouvel élève</h2>
+      <h2 style={{ color: "#539bff" }} className="text-center mb-4">
+        Ajouter un nouvel élève
+      </h2>
 
-      <div className="row g-4">
+      <div  className="row g-4">
         {/* Photo */}
-        <div className="col-xl-3 col-lg-4 text-center">
+        <div style={{height:'30%'}} className="col-xl-3 col-lg-4 text-center">
           <div className="card shadow-sm p-3">
             <div
               style={{
@@ -186,7 +186,7 @@ const AddNewStudent = () => {
               id="imageUpload"
               accept=".png,.jpg,.jpeg"
             />
-            <label htmlFor="imageUpload" className="btn btn-primary btn-sm me-2 mb-2">
+            <label htmlFor="imageUpload" className="btn btn-primary ">
               Choisir la photo
             </label>
             <button className="btn btn-danger btn-sm mb-2" onClick={removeFile}>
@@ -202,66 +202,131 @@ const AddNewStudent = () => {
             <div className="row g-3">
               <div className="col-md-6">
                 <label className="form-label">Nom</label>
-                <input type="text" name="first_name" className="form-control" value={formData.first_name} onChange={handleChange} />
-              </div>
-              <div className="col-md-6">
-                <label className="form-label">Postnom</label>
-                <input type="text" name="last_name" className="form-control" value={formData.last_name} onChange={handleChange} />
-              </div>
-              <div className="col-md-6">
-                <label className="form-label">Prénom</label>
-                <input type="text" name="nick_name" className="form-control" value={formData.nick_name} onChange={handleChange} />
-              </div>
-              <div className="col-md-6">
-                <label className="form-label">Date de naissance</label>
-                <DatePicker
-                  selected={startDate}
-                  onChange={(date) => {
-                    setStartDate(date);
-                    setFormData((prev) => ({ ...prev, birth_date: date ? date.toISOString().split("T")[0] : "" }));
-                  }}
-                  placeholderText="AAAA-MM-JJ"
+                <input
+                  type="text"
+                  name="first_name"
                   className="form-control"
-                  dateFormat="yyyy-MM-dd"
-                  maxDate={new Date()}
-                  showYearDropdown
-                  scrollableYearDropdown
+                  value={formData.first_name}
+                  onChange={handleChange}
                 />
               </div>
               <div className="col-md-6">
-                <label className="form-label">Lieu de naissance</label>
-                <input type="text" name="birth_place" className="form-control" value={formData.birth_place} onChange={handleChange} />
+                <label className="form-label">Postnom</label>
+                <input
+                  type="text"
+                  name="last_name"
+                  className="form-control"
+                  value={formData.last_name}
+                  onChange={handleChange}
+                />
               </div>
               <div className="col-md-6">
+                <label className="form-label">Prénom</label>
+                <input
+                  type="text"
+                  name="nick_name"
+                  className="form-control"
+                  value={formData.nick_name}
+                  onChange={handleChange}
+                />
+              </div>
+
+              {/* ✅ Date de naissance simplifiée */}
+              <div className="col-md-6">
+                <label className="form-label">Date de naissance</label>
+                <div className="input-group">
+                  <input
+                    type="date"
+                    name="birth_date"
+                    className="form-control"
+                    value={formData.birth_date}
+                    onChange={handleChange}
+                    max={new Date().toISOString().split("T")[0]}
+                  />
+                  <span className="input-group-text">
+                    <i className="bi bi-calendar-date"></i>
+                  </span>
+                </div>
+              </div>
+
+              <div className="col-md-6">
+                <label className="form-label">Lieu de naissance</label>
+                <input
+                  type="text"
+                  name="birth_place"
+                  className="form-control"
+                  value={formData.birth_place}
+                  onChange={handleChange}
+                />
+              </div>
+
+              <div className="col-md-6">
                 <label className="form-label">Genre</label>
-                <select name="gender" className="form-select" value={formData.gender} onChange={handleChange}>
+                <select
+                  name="gender"
+                  className="form-select"
+                  value={formData.gender}
+                  onChange={handleChange}
+                >
                   <option value="M">Homme</option>
                   <option value="F">Femme</option>
                 </select>
               </div>
+
               <div className="col-md-6">
                 <label className="form-label">Email</label>
-                <input type="email" name="email" className="form-control" value={formData.email} onChange={handleChange} />
+                <input
+                  type="email"
+                  name="email"
+                  className="form-control"
+                  value={formData.email}
+                  onChange={handleChange}
+                />
               </div>
+
               <div className="col-md-6">
                 <label className="form-label">Téléphone</label>
-                <input type="text" name="phone_number" className="form-control" value={formData.phone_number} onChange={handleChange} />
+                <input
+                  type="text"
+                  name="phone_number"
+                  className="form-control"
+                  value={formData.phone_number}
+                  onChange={handleChange}
+                />
               </div>
+
               <div className="col-12">
                 <label className="form-label">Adresse</label>
-                <textarea name="address" className="form-control" value={formData.address} onChange={handleChange} rows={3}></textarea>
+                <textarea
+                  name="address"
+                  className="form-control"
+                  value={formData.address}
+                  onChange={handleChange}
+                  rows={3}
+                ></textarea>
               </div>
             </div>
 
             <hr className="my-4" />
 
+            {/* Parents et tuteurs inchangés */}
             <h5 className="text-primary mb-3">Parents / Tuteur</h5>
             <div className="row g-3">
               <div className="col-md-4">
                 <label className="form-label">Père</label>
                 <Select
-                  options={fathers.map((f) => ({ value: f.id, label: f.full_name }))}
-                  value={fathers.find((f) => f.id === formData.father) ? { value: formData.father, label: fathers.find((f) => f.id === formData.father).full_name } : null}
+                  options={fathers.map((f) => ({
+                    value: f.id,
+                    label: f.full_name,
+                  }))}
+                  value={
+                    fathers.find((f) => f.id === formData.father)
+                      ? {
+                          value: formData.father,
+                          label: fathers.find((f) => f.id === formData.father).full_name,
+                        }
+                      : null
+                  }
                   onChange={(option) => handleSelectChange("father", option)}
                   placeholder="Sélectionner un père..."
                   isClearable
@@ -270,8 +335,18 @@ const AddNewStudent = () => {
               <div className="col-md-4">
                 <label className="form-label">Mère</label>
                 <Select
-                  options={mothers.map((m) => ({ value: m.id, label: m.full_name }))}
-                  value={mothers.find((m) => m.id === formData.mother) ? { value: formData.mother, label: mothers.find((m) => m.id === formData.mother).full_name } : null}
+                  options={mothers.map((m) => ({
+                    value: m.id,
+                    label: m.full_name,
+                  }))}
+                  value={
+                    mothers.find((m) => m.id === formData.mother)
+                      ? {
+                          value: formData.mother,
+                          label: mothers.find((m) => m.id === formData.mother).full_name,
+                        }
+                      : null
+                  }
                   onChange={(option) => handleSelectChange("mother", option)}
                   placeholder="Sélectionner une mère..."
                   isClearable
@@ -280,8 +355,18 @@ const AddNewStudent = () => {
               <div className="col-md-4">
                 <label className="form-label">Tuteur</label>
                 <Select
-                  options={tutors.map((t) => ({ value: t.id, label: t.full_name }))}
-                  value={tutors.find((t) => t.id === formData.tutor) ? { value: formData.tutor, label: tutors.find((t) => t.id === formData.tutor).full_name } : null}
+                  options={tutors.map((t) => ({
+                    value: t.id,
+                    label: t.full_name,
+                  }))}
+                  value={
+                    tutors.find((t) => t.id === formData.tutor)
+                      ? {
+                          value: formData.tutor,
+                          label: tutors.find((t) => t.id === formData.tutor).full_name,
+                        }
+                      : null
+                  }
                   onChange={(option) => handleSelectChange("tutor", option)}
                   placeholder="Sélectionner un tuteur..."
                   isClearable
@@ -291,47 +376,103 @@ const AddNewStudent = () => {
 
             <hr className="my-4" />
 
+            {/* Catégorie / Province / Religion inchangé */}
             <h5 className="text-primary mb-3">Catégorie / Province / Religion</h5>
             <div className="row g-3">
               <div className="col-md-4">
                 <label className="form-label">Catégorie</label>
-                <select name="student_category" className="form-select" value={formData.student_category} onChange={handleChange}>
+                <select
+                  name="student_category"
+                  className="form-select"
+                  value={formData.student_category}
+                  onChange={handleChange}
+                >
                   <option value="">Sélectionner</option>
-                  {categories.map((c) => (<option key={c.id} value={c.id}>{c.designation}</option>))}
+                  {categories.map((c) => (
+                    <option key={c.id} value={c.id}>
+                      {c.designation}
+                    </option>
+                  ))}
                 </select>
               </div>
+
               <div className="col-md-4">
                 <label className="form-label">Province</label>
-                <select name="province" className="form-select" value={formData.province} onChange={handleChange}>
+                <select
+                  name="province"
+                  className="form-select"
+                  value={formData.province}
+                  onChange={handleChange}
+                >
                   <option value="">Sélectionner</option>
-                  {provinces.map((p) => (<option key={p.id} value={p.id}>{p.name}</option>))}
+                  {provinces.map((p) => (
+                    <option key={p.id} value={p.id}>
+                      {p.name}
+                    </option>
+                  ))}
                 </select>
               </div>
+
               <div className="col-md-4">
                 <label className="form-label">Religion</label>
-                <select name="religion" className="form-select" value={formData.religion} onChange={handleChange}>
+                <select
+                  name="religion"
+                  className="form-select"
+                  value={formData.religion}
+                  onChange={handleChange}
+                >
                   <option value="">Sélectionner</option>
-                  {religions.map((r) => (<option key={r.id} value={r.id}>{r.name}</option>))}
+                  {religions.map((r) => (
+                    <option key={r.id} value={r.id}>
+                      {r.name}
+                    </option>
+                  ))}
                 </select>
               </div>
+
               <div className="col-md-4 mt-2">
                 <label className="form-label">Groupe sanguin</label>
-                <select name="blood_group" className="form-select" value={formData.blood_group} onChange={handleChange}>
+                <select
+                  name="blood_group"
+                  className="form-select"
+                  value={formData.blood_group}
+                  onChange={handleChange}
+                >
                   <option value="">Sélectionner</option>
-                  {bloodGroups.map((b) => (<option key={b.id} value={b.id}>{b.name}</option>))}
+                  {bloodGroups.map((b) => (
+                    <option key={b.id} value={b.id}>
+                      {b.name}
+                    </option>
+                  ))}
                 </select>
               </div>
+
               <div className="col-md-4 mt-2">
                 <label className="form-label">Statut</label>
-                <select name="student_status" className="form-select" value={formData.student_status} onChange={handleChange}>
+                <select
+                  name="student_status"
+                  className="form-select"
+                  value={formData.student_status}
+                  onChange={handleChange}
+                >
                   <option value="">Sélectionner</option>
-                  {statuses.map((s) => (<option key={s.id} value={s.id}>{s.label}</option>))}
+                  {statuses.map((s) => (
+                    <option key={s.id} value={s.id}>
+                      {s.label}
+                    </option>
+                  ))}
                 </select>
               </div>
             </div>
 
             <div className="text-center mt-4">
-              <button style={{backgroundColor:'#539bff',color:'white'}} className="btn btn-light btn-lg" type="button" onClick={handleSubmit} disabled={loading}>
+              <button
+                style={{ backgroundColor: "#539bff", color: "white" }}
+                className="btn btn-light btn-lg"
+                type="button"
+                onClick={handleSubmit}
+                disabled={loading}
+              >
                 {loading ? "Enregistrement..." : "Enregistrer"}
               </button>
             </div>

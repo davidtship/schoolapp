@@ -14,6 +14,8 @@ import Footer from "./layouts/Footer";
 import ScrollToTop from "./layouts/ScrollToTop";
 /// Dashboard
 import Home from "./components/Dashboard/Home";
+
+
 //Organisations
 
 import Direction from "./components/Organisation/Directions";
@@ -24,12 +26,15 @@ import Classes from "./components/Organisation/Classes";
 import TypeFrais from "./components/Frais/TypeFrais";
 import CategorieFrais from "./components/Frais/CategorieFrais";
 import FraisParOption from "./components/Frais/frais_options";
-
+import Terms from "./components/Frais/Terms";
 //student
 import Students from "./components/Student/Students";
 import StudentDetails from "./components/Student/StudentDetails";
 import AddNewStudent from "./components/Student/AddNewStudent";
 import Affectations from "./components/Student/Affectations";
+
+//Payement
+import Payement from "./components/Payement/Payement";
 
 /// Pages
 
@@ -48,6 +53,8 @@ import ConfigMonaie from "./components/Parametres/ConfigurationMonaie";
 
 const Markup = () => {
   const routhPath = [
+  {url: "payement", component: <Payement/>},
+  {url: "terms", component: <Terms/>},
   {url: "affectations", component: <Affectations/>},
   {url: "configSchool", component: <ConfigSchool/>},
   {url: "classes", component: <Classes/>},

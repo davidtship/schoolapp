@@ -1,0 +1,29 @@
+/* Largeur personnalisée du modal */
+.custom-modal-width {
+  max-width: 80% !important;
+}
+
+/* Ajuste la disposition horizontale */
+.horizontal-modal .modal-body {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 2rem;
+  flex-wrap: wrap; /* Empêche le débordement */
+  max-height: 100vh; /* 🔹 Réduit la hauteur visible */
+  overflow-y: auto; /* 🔹 Active le scroll interne si le contenu dépasse */
+  padding: 1.5rem; /* Légère marge intérieure */
+}
+
+/* Améliore la présentation générale */
+.modal-content {
+  border-radius: 15px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+  max-height: 100vh; /* 🔹 Limite la hauteur globale du modal */
+  overflow: hidden; /* Empêche le débordement de l’en-tête/pied */
+}
+
+/* Optionnel : réduit la taille du header et footer pour un rendu plus compact */
+.modal-header, .modal-footer {
+  padding: 0.75rem 1.25rem !important;
+}
